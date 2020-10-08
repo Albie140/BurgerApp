@@ -1,0 +1,1 @@
+INSERT INTO burgers (burger_name) VALUES ("Veggie Burger"), ("Portobella Burger"), ("Turkey Burger")
