@@ -1,16 +1,16 @@
 $(document).ready(function () {
     $(".eatBurgerBtn").on("click", function (event) {
         event.preventDefault()
-        var  id =$(this).data("id");
-        // var devouredburg= $(this).data("devouredburg");
-
-        // var Eaten={
-        //     devoured: devouredburg
-        // };
+        var id = $(this).data("id");
+        var devoured = $(this).data("devoured");
+        var newDevouredState = {
+            devoured: devoured
+          };
         //AJAX calls
-        $.ajax({url:"/api/burgers" + id,  
+        $.ajax({
+            data: newDevouredState,
             method: "PUT",
-            
+
         }).then(function (data) {
             console.log(data);
             window.location = "/";
@@ -24,7 +24,7 @@ $(document).ready(function () {
         var newBurger = {
             burger_name: $(".burger_name").val().trim(),
         };
-        $.ajax("/api/burgers", { 
+        $.ajax("/api/burgers", {
             method: "POST",
             data: newBurger
         }).then(
@@ -33,5 +33,5 @@ $(document).ready(function () {
                 // Reload the page to get the updated list
                 window.location = "/";
             });
-        });
+    });
 })

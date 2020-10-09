@@ -33,9 +33,8 @@ router.post("/api/burgers", function (req, res) {
 router.put("/api/burgers", function (req, res) {
   burger.update(req.body.id, function () {
     console.log(res)
-    res.redirect("/");
+    res.json(result);
   });
 });
-
 
 module.exports = router;
