@@ -1,5 +1,5 @@
 <h1>Burger App</h1>
-
+<img src="assets/img/burger.png" alt ="Image of a Burger" width="300px" height="300px">
 {{!-- Loop --}}
 {{!-- Align Left --}}
 <ul>
@@ -7,7 +7,7 @@
     {{#unless this.devoured}}
     {{!-- Render undevoured burgers here --}}
     <li>{{ this.id }}. {{ this.burger_name }} </li>
-    <button data-id="{{this.id}}" class="eatBurgerBtn">Devour!</button>
+    <button data-id="{{this.id}}" class="eatBurgerBtn">Eat ME!</button>
      <li>{{ this.burger_name }} </li>
 
 <li>{{ this.burger_name }} </li> 
@@ -23,9 +23,9 @@
     {{/each}}
 </ul> 
 
-<h2>Add a Burger to Devour</h2>
+<h2>Add a Burger to Devour...</h2>
 <form class="devour-form">
-    <textarea></textarea>
-    <input type="hidden" class="burger_id" type="text" value={{this.id}}>
+    <textarea rows="8" cols ="35"> </textarea>
+    <input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
     <button type="submit"> Add a Burger!</button>
 </form>
