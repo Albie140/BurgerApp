@@ -4,28 +4,46 @@
 
 <br><br>
 
-
 {{!-- Align Left --}}
 
-    {{#each burger}}
-    {{#unless this.devoured}}
-    {{!-- Render undevoured burgers here --}}
-    {{!-- <li> --}}
+
+<div class="card-group">
+
+    <div class="card">
+        <div class="card-body">
+        <h2>Uneaten Burgers</h2><br>
+        {{#each burger}}
+        {{#unless this.devoured}}
+        {{!-- Render undevoured burgers here --}}
+        {{!-- <li> --}}
         <p>{{ this.id }}. {{ this.burger_name }}</p>
-    {{!-- </li> --}}
-    <button data-id="{{this.id}}" class="eatBurgerBtn">Eat Me!</button>
-    
-    {{/unless}}
-    {{/each}}
+        {{!-- </li> --}}
+        <button data-id="{{this.id}}" class="eatBurgerBtn">Eat Me!</button>
+
+        {{/unless}}
+        {{/each}}
+        </div>
+    </div>
+
 
 
     {{!-- Align right --}}
-    {{#each burger}}
-    {{#if this.devoured}}
-    <p>{{ this.id }}. {{ this.burger_name }} </p>
-    {{/if}}
-    {{/each}}
 
+
+
+    <div class="card">
+        <div class="card-body">
+        <h2>Devoured Burgers</h2><br>
+        {{#each burger}}
+        {{#if this.devoured}}
+        <p>{{ this.id }}. {{ this.burger_name }} </p>
+        {{/if}}
+        {{/each}}
+        </div>
+    </div>
+
+</div>
+<br>
 
 <h2>Add a Burger to Devour...</h2>
 <form method="POST" action="/create" class="devour-form">
