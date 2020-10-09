@@ -1,10 +1,7 @@
 body{
-    background-color: lightblue;
+    background-color: black;
     text-align: center;
+    color: lightgrey;
+    font-size: 30;
 
 };
-.heroImage{
-    height: 50%;
-    background-position: center;
-    position: relative;
-}

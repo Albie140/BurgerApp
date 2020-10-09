@@ -2,7 +2,8 @@
 
 <img src="assets/img/burger1.jpg" alt="Image of a Burger" width="280px" height="300px">
 
-<br>
+<br><br>
+
 
 {{!-- Align Left --}}
 
@@ -17,18 +18,18 @@
     {{/unless}}
     {{/each}}
 
-<ul>
+
     {{!-- Align right --}}
     {{#each burger}}
     {{#if this.devoured}}
-    <li>{{ this.id }}. {{ this.burger_name }} </li>
+    <p>{{ this.id }}. {{ this.burger_name }} </p>
     {{/if}}
     {{/each}}
-</ul>
+
 
 <h2>Add a Burger to Devour...</h2>
 <form method="POST" action="/create" class="devour-form">
-    <textarea rows="8" cols="35" class="burger_name"> </textarea>
+    <textarea rows="2" cols="35" class="burger_name"> </textarea>
     {{!-- <input type="hidden" name="devoured" class="burger_id" type="text" value="1" devoured> --}}
     <br>
     <button type="submit"> Add a Burger!</button>
