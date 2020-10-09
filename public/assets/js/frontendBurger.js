@@ -8,7 +8,7 @@ $(document).ready(function () {
           };
         //AJAX calls
         $.ajax({
-            data: newDevouredState,
+            url: "/api/burgers/" + id,
             method: "PUT",
 
         }).then(function (data) {

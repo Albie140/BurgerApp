@@ -30,10 +30,10 @@ router.post("/api/burgers", function (req, res) {
   });
 });
 //Devour Burger
-router.put("/api/burgers", function (req, res) {
-  burger.update(req.body.id, function () {
+router.put("/api/burgers/:id", function (req, res) {
+  burger.update(req.params.id, function () {
     console.log(res)
-    res.json(result);
+    res.sendStatus(200);
   });
 });
 
