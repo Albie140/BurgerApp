@@ -8,7 +8,7 @@ $(document).ready(function () {
         //     devoured: devouredburg
         // };
         //AJAX calls
-        $.ajax({url:"/burgers" + id,  
+        $.ajax({url:"/api/burgers" + id,  
             method: "PUT",
             
         }).then(function (data) {
@@ -22,9 +22,9 @@ $(document).ready(function () {
         event.preventDefault();
 
         var newBurger = {
-            name: $(".burger_id").val().trim(),
+            burger_name: $(".burger_name").val().trim(),
         };
-        $.ajax("/burgers", { 
+        $.ajax("/api/burgers", { 
             method: "POST",
             data: newBurger
         }).then(

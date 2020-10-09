@@ -21,15 +21,16 @@ router.get("/", function (req, res) {
 
 });
 // Add a new burger
-router.post("/burgers", function (req, res) {
-  burger.create(req.body.burger_name, function (res) {
-    console.log(res);
-    res.redirect("/");
+router.post("/api/burgers", function (req, res) {
+  console.log(req.body);
+  burger.create("burger_name", req.body.burger_name, function (result) {
+    console.log(result);
+    res.json(result);
 
   });
 });
 //Devour Burger
-router.put("/burgers", function (req, res) {
+router.put("/api/burgers", function (req, res) {
   burger.update(req.body.id, function () {
     console.log(res)
     res.redirect("/");
