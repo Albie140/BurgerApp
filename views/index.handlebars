@@ -3,22 +3,29 @@
 {{!-- Loop --}}
 {{!-- Align Left --}}
 <ul>
-{{#each burgers}}
-{{#unless devoured}}
-{{!-- Render undevoured burgers here --}}
-    <li>{{!-- {{ name of burger }} --}}
-    {{!-- <button  data-id="{{id}}"- id pulled from the server js.
-    class ="eatBurgerBtn">Devour</button> --}}</li>
+    {{#each burger_name}}
+    {{#unless this.devoured}}
+    {{!-- Render undevoured burgers here --}}
+    <li>{{ this.id }}. {{ this.burger_name }} </li>
+    <button data-id="{{this.id}}" class="eatBurgerBtn">Devour!</button>
+     <li>{{ this.burger_name }} </li>
 
-{{/unless}}
-{{/each}}
-</ul>
+<li>{{ this.burger_name }} </li> 
+    {{/unless}}
+    {{/each}}
+</ul> 
 <ul>
-    {{!-- Align right --}}
-{{#each burgers}}
-{{#if devoured}}
-{{!-- Render devoured burgers here --}}
-{{!-- <li> {{ name }}</li> --}}
-{{/if}}
-{{/each}}
-</ul>
+     {{!-- Align right --}}
+    {{#each burger_name}}
+    {{#if this.devoured}}
+    <li>{{ this.id }}. {{ this.burger_name }} </li>
+    {{/if}}
+    {{/each}}
+</ul> 
+
+<h2>Add a Burger to Devour</h2>
+<form class="devour-form">
+    <textarea></textarea>
+    <input type="hidden" class="burger_id" type="text" value={{this.id}}>
+    <button type="submit"> Add a Burger!</button>
+</form>

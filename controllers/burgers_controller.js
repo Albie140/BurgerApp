@@ -2,53 +2,55 @@ var express = require("express");
 const burger = require("../models/burger.js");
 const router = express.Router();
 
-// Pull form database! 
-// const burgers = [
-//     {
-        
-//     },
-//     {
-        
-//     },
-//     {
-        
-//     },
-    
-// ]
-
-//Go in controller file
-//HTML Route
-// app.get("/", (req, res) => {
-//     res.render("index", {
-//         burgers: burgers
-//     });
-// });
-app.get("/api/burgers", (req, res) => {
-// MySQL select
-     //MySQL retrieves burgers array from DB
-    // res.json(burgers) should be coming from mySQL
-    connection.query("SELECT * FROM burgers", function(err, data) {
-        if(err)
-          throw err;
-    
-        console.log(data);
-    
-        res.render("index", { burgers: data });
-      });
-
-})
 
 
+//HTML Routes
+
+router.get("/", function (req, res) {
+  res.redirect("/burgers");
+});
+
+router.get("/burgers", function (req, res) {
+  
+
+  burger.all(function (data) {
+    var burgerObject = {
+      burgers: data
+    };
+    console.log(burgerObject);
+    res.render("index", burgerObject);
+  });
+
+});
 // Add a new burger
-// app.post("/api/burgers", (req, res) => {
+router.post("/burgers/create", function (req, res) {
+  burger.insertOne(req.body.burger_name, function (res) {
+    
+    console.log(res);
+    res.redirect("/");
+  
+  });
+});
+//Devour Burger
+router.post('/burgers/eat', function (req, res) {
+  burger.updateOne(req.body.id, function() {
+    console.log(res)
+    res.redirect('/');
+  });
+});
+
+// router.put
+
+
+// app.post("/burgers", (req, res) => {
 // // let newBurger = req.body;
 // // MySQL insert
 // })
 
-// app.put("/api/burgers/:id", (req, res) => {
-   
+// app.put("/burgers/:id", (req, res) => {
+
 //     // const chosen = req.params.id;= eat action
 //     //MySQL update
 // })
 
-module.exports = router
+module.exports = router;
