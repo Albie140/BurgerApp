@@ -10,12 +10,16 @@ var burger = {
         })
     },
     
-    create: function(cb, val){
-        orm.insertOne("burgers", "burger_name", val, cb) 
+    create: function(cols, vals, cb){
+        orm.insertOne("burgers",cols, vals, function(res) {
+            cb(res);
+        }); 
     },
 
-    update: function(burger_id, cb){
-        orm.updateOne("burgers", {devoured: true}, burger_id, cb)
+    update: function(objColVals, condition, cb) {
+        orm.updateOne("burgers", objColVals, condition, function(res) {
+            cb(res);
+        });
     }
 }
 

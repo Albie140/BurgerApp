@@ -1,17 +1,18 @@
 $(document).ready(function () {
     $(".eatBurgerBtn").on("click", function (event) {
         event.preventDefault()
-        var  burgerData= {
-            id: $(this).attr('data-id')	
-        }
+        var  id =$(this).data("id");
+        // var devouredburg= $(this).data("devouredburg");
 
+        // var Eaten={
+        //     devoured: devouredburg
+        // };
         //AJAX calls
-        $.ajax({
+        $.ajax({url:"/burgers" + id,  
             method: "PUT",
-            url: burgerData
-        }).then(function () {
-            console.log("Looks delicious!");
-
+            
+        }).then(function (data) {
+            console.log(data);
             window.location = "/";
         });
 
@@ -21,15 +22,14 @@ $(document).ready(function () {
         event.preventDefault();
 
         var newBurger = {
-            name: $("#newBurger_name").val().trim(),
-            
+            name: $(".burger_id").val().trim(),
         };
-        $.ajax("/burgers/create", {
+        $.ajax("/burgers", { 
             method: "POST",
             data: newBurger
         }).then(
             function () {
-                console.log("That was yummy!");
+                console.log("Looks yummy!");
                 // Reload the page to get the updated list
                 window.location = "/";
             });

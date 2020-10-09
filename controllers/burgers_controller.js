@@ -1,21 +1,19 @@
 var express = require("express");
-const burger = require("../models/burger.js");
 const router = express.Router();
 
-
+const burger = require("../models/burger.js");
 
 //HTML Routes
 
-router.get("/", function (req, res) {
-  res.redirect("/burgers");
-});
+// router.get("/", function (req, res) {
+//   res.redirect("/burgers");
+// });
 
-router.get("/burgers", function (req, res) {
-  
+router.get("/", function (req, res) {
 
   burger.all(function (data) {
     var burgerObject = {
-      burgers: data
+      burger: data
     };
     console.log(burgerObject);
     res.render("index", burgerObject);
@@ -24,33 +22,19 @@ router.get("/burgers", function (req, res) {
 });
 // Add a new burger
 router.post("/burgers", function (req, res) {
-  burger.insertOne(req.body.burger_name, function (res) {
-    
+  burger.create(req.body.burger_name, function (res) {
     console.log(res);
     res.redirect("/");
-  
+
   });
 });
 //Devour Burger
-router.post("/burgers", function (req, res) {
-  burger.updateOne(req.body.id, function() {
+router.put("/burgers", function (req, res) {
+  burger.update(req.body.id, function () {
     console.log(res)
-    res.redirect('/');
+    res.redirect("/");
   });
 });
 
-// router.put
-
-
-// app.post("/burgers", (req, res) => {
-// // let newBurger = req.body;
-// // MySQL insert
-// })
-
-// app.put("/burgers/:id", (req, res) => {
-
-//     // const chosen = req.params.id;= eat action
-//     //MySQL update
-// })
 
 module.exports = router;

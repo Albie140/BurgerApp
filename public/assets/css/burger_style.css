@@ -1,5 +1,10 @@
 body{
     background-color: lightblue;
     text-align: center;
-    
+
 };
+.heroImage{
+    height: 50%;
+    background-position: center;
+    position: relative;
+}
